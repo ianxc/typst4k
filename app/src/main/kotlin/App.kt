@@ -1,6 +1,6 @@
-package com.ianxc.app
+package com.ianxc.typst4k.app
 
-import com.ianxc.utils.Printer
+import com.ianxc.tpyst4k.utils.Printer
 
 // This is the main entry point of the application.
 // It uses the `Printer` class from the `:utils` subproject.
