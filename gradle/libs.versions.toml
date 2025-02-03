@@ -4,6 +4,11 @@
 
 [versions]
 kotlin = "2.1.0"
+ktfmt = "0.21.0"
+
+[plugins]
+ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }
 
 [libraries]
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+ktfmtGradlePlugin = { module = "com.ncorti.ktfmt.gradle:plugin", version.ref = "ktfmt" }
