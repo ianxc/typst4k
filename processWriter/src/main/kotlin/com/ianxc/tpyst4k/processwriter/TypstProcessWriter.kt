@@ -1,10 +1,10 @@
 package com.ianxc.tpyst4k.processwriter
 
-import com.ianxc.tpyst4k.utils.TypstExecutionOptions
-import com.ianxc.tpyst4k.utils.TypstProcessWriteException
-import com.ianxc.tpyst4k.utils.TypstWriteRequest
-import com.ianxc.tpyst4k.utils.TypstWriteResponse
-import com.ianxc.tpyst4k.utils.TypstWriter
+import com.ianxc.typst4k.api.TypstExecutionOptions
+import com.ianxc.typst4k.api.TypstProcessWriteException
+import com.ianxc.typst4k.api.TypstWriteRequest
+import com.ianxc.typst4k.api.TypstWriteResponse
+import com.ianxc.typst4k.api.TypstWriter
 import java.io.File
 import java.util.concurrent.TimeUnit
 import kotlin.io.path.absolutePathString

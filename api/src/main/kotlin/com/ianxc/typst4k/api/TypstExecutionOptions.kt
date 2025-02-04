@@ -1,4 +1,4 @@
-package com.ianxc.tpyst4k.utils
+package com.ianxc.typst4k.api
 
 import kotlin.time.Duration
 

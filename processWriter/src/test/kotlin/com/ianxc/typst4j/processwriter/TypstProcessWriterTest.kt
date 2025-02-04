@@ -1,7 +1,8 @@
-package com.ianxc.tpyst4k.processwriter
+package com.ianxc.typst4j.processwriter
 
-import com.ianxc.tpyst4k.utils.TypstPdfStandard
-import com.ianxc.tpyst4k.utils.TypstWriteRequest
+import com.ianxc.tpyst4k.processwriter.TypstProcessWriter
+import com.ianxc.typst4k.api.TypstPdfStandard
+import com.ianxc.typst4k.api.TypstWriteRequest
 import io.kotest.matchers.shouldBe
 import java.time.Instant
 import kotlin.io.path.Path
