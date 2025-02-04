@@ -4,12 +4,20 @@
 // the rest of the build.
 package buildsrc.convention
 
+import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin in JVM projects.
     kotlin("jvm")
     id("com.ncorti.ktfmt.gradle")
+}
+
+val libs = the<LibrariesForLibs>()
+
+dependencies {
+    testImplementation(kotlin("test"))
+    testImplementation(libs.kotest.assertions)
 }
 
 kotlin {
@@ -25,4 +33,7 @@ tasks.withType<Test>().configureEach {
     testLogging { events(TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED) }
 }
 
-ktfmt { kotlinLangStyle() }
+ktfmt {
+    kotlinLangStyle()
+    manageTrailingCommas = false
+}

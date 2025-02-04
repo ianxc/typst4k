@@ -3,6 +3,7 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
+kotest = "5.9.1"
 kotlin = "2.1.0"
 ktfmt = "0.21.0"
 
@@ -10,5 +11,6 @@ ktfmt = "0.21.0"
 ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }
 
 [libraries]
+kotest-assertions = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 ktfmtGradlePlugin = { module = "com.ncorti.ktfmt.gradle:plugin", version.ref = "ktfmt" }
