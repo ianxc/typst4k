@@ -16,9 +16,12 @@ class TypstProcessWriterTest {
     fun `should make cmd list`() {
         val request =
             TypstWriteRequest(
-                Path("r1_input.typ"),
-                Path("r1_output.pdf"),
-                kvInputs = mapOf("overview" to "overview.json", "stream" to "stream.json"),
+                Path("/templates/r1_input.typ"),
+                Path("/templates/r1_output.pdf"),
+                kvInputs =
+                    mapOf(
+                        "overview" to "/tmp/req-1/overview.json",
+                        "stream" to "/tmp/req-1/stream.json"),
                 creationTimestamp = Instant.ofEpochMilli(1738675450),
                 jobs = 2,
                 pdfStandards = listOf(TypstPdfStandard.A_2B),
@@ -31,15 +34,16 @@ class TypstProcessWriterTest {
                 "typst",
                 "compile",
                 "--input",
-                "overview=overview.json",
+                "overview=/tmp/req-1/overview.json",
                 "--input",
-                "stream=stream.json",
+                "stream=/tmp/req-1/stream.json",
                 "--creation-timestamp",
                 "1738675",
                 "--jobs",
                 "2",
                 "--pdf-standard",
                 "a-2b",
-            )
+                "/templates/r1_input.typ",
+                "/templates/r1_output.pdf")
     }
 }

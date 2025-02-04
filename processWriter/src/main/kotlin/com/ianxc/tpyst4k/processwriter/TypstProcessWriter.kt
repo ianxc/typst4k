@@ -82,6 +82,9 @@ class TypstProcessWriter(
             cmd.add(joined)
         }
 
+        cmd.add(request.inputPath.absolutePathString())
+        cmd.add(request.outputPath.absolutePathString())
+
         return cmd
     }
 
