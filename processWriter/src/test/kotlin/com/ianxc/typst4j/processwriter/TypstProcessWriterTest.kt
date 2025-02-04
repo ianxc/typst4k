@@ -12,12 +12,14 @@ import org.junit.jupiter.api.Test
 class TypstProcessWriterTest {
     private val sut = TypstProcessWriter("typst", TimeSource.Monotonic)
 
+    @Test fun `should generate file`() {}
+
     @Test
     fun `should make cmd list`() {
         val request =
             TypstWriteRequest(
                 Path("/templates/r1_input.typ"),
-                Path("/templates/r1_output.pdf"),
+                Path("/tmp/req-1/r1_output.pdf"),
                 kvInputs =
                     mapOf(
                         "overview" to "/tmp/req-1/overview.json",
@@ -44,6 +46,6 @@ class TypstProcessWriterTest {
                 "--pdf-standard",
                 "a-2b",
                 "/templates/r1_input.typ",
-                "/templates/r1_output.pdf")
+                "/tmp/req-1/r1_output.pdf")
     }
 }
