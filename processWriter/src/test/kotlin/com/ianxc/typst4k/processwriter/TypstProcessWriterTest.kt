@@ -1,18 +1,39 @@
-package com.ianxc.typst4j.processwriter
+package com.ianxc.typst4k.processwriter
 
 import com.ianxc.tpyst4k.processwriter.TypstProcessWriter
+import com.ianxc.typst4k.api.TypstExecutionOptions
 import com.ianxc.typst4k.api.TypstPdfStandard
 import com.ianxc.typst4k.api.TypstWriteRequest
+import io.kotest.matchers.comparables.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 import java.time.Instant
 import kotlin.io.path.Path
+import kotlin.io.path.createParentDirectories
+import kotlin.io.path.pathString
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.TimeSource
 import org.junit.jupiter.api.Test
 
-class TypstProcessWriterTest {
+internal class TypstProcessWriterTest {
     private val sut = TypstProcessWriter("typst", TimeSource.Monotonic)
 
-    @Test fun `should generate file`() {}
+    @Test
+    fun `should generate file`() {
+        val dataRootPath = resourceOf("/requests/test_1")!!
+        val request =
+            TypstWriteRequest(
+                resourceOf("/templates/color_table/main.typ")!!,
+                Path("build/tmp/test_1/r1_output.pdf").createParentDirectories(),
+                root = dataRootPath,
+                kvInputs = mapOf("data_file" to dataRootPath.resolve("source.csv").pathString),
+                pdfStandards = listOf(TypstPdfStandard.V_1_7))
+        val opts = TypstExecutionOptions(10.seconds)
+
+        val response = sut.write(request, opts)
+
+        response.writeDuration shouldBeLessThan 30.seconds
+        println(response)
+    }
 
     @Test
     fun `should make cmd list`() {

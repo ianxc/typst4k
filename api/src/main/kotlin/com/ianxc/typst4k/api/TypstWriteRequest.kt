@@ -21,7 +21,7 @@ data class TypstWriteRequest(
     val pdfStandards: List<TypstPdfStandard> = emptyList(),
 ) {
     init {
-        kvInputs.keys.forEach { k ->
+        kvInputs.forEach { k, _ ->
             check(kvInputPattern.matches(k)) { "kvInputs key must be word-like but got: $k" }
         }
     }

@@ -20,7 +20,10 @@ class TypstProcessWriter(
         executionOptions: TypstExecutionOptions,
     ): TypstWriteResponse {
         val cmd = requestToCmd(request)
-        val builder = ProcessBuilder(cmd)
+        val builder =
+            ProcessBuilder(cmd)
+                .redirectError(ProcessBuilder.Redirect.INHERIT)
+                .redirectOutput(ProcessBuilder.Redirect.INHERIT)
 
         val markStart = timeSource.markNow()
         val process = builder.start()
@@ -32,6 +35,10 @@ class TypstProcessWriter(
             process.destroyForcibly()
             process.waitFor()
             throw TypstProcessWriteException(process.exitValue())
+        }
+        val completedExitValue = process.exitValue()
+        if (completedExitValue != 0) {
+            throw TypstProcessWriteException(completedExitValue)
         }
 
         val processDuration = markEnd - markStart
@@ -90,7 +97,7 @@ class TypstProcessWriter(
 
     internal fun extractTimeout(executionOptions: TypstExecutionOptions): Pair<Long, TimeUnit> {
         return when (val t = executionOptions.timeout) {
-            null -> 1L to TimeUnit.MINUTES
+            null -> 30L to TimeUnit.SECONDS
             else -> {
                 val seconds = t.inWholeSeconds.coerceAtLeast(1L)
                 seconds to TimeUnit.SECONDS
