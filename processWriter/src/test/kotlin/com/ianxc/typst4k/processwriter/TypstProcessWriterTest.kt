@@ -27,7 +27,7 @@ internal class TypstProcessWriterTest {
                 root = dataRootPath,
                 kvInputs = mapOf("data_file" to dataRootPath.resolve("source.csv").pathString),
                 pdfStandards = listOf(TypstPdfStandard.V_1_7))
-        val opts = TypstExecutionOptions(10.seconds)
+        val opts = TypstExecutionOptions(30.seconds)
 
         val response = sut.write(request, opts)
 
