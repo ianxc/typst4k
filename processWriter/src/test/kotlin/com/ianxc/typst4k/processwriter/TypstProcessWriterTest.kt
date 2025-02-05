@@ -26,6 +26,7 @@ internal class TypstProcessWriterTest {
                 Path("build/tmp/test_1/r1_output.pdf").createParentDirectories(),
                 root = dataRootPath,
                 kvInputs = mapOf("data_file" to dataRootPath.resolve("source.csv").pathString),
+                jobs = 1,
                 pdfStandards = listOf(TypstPdfStandard.V_1_7))
         val opts = TypstExecutionOptions(30.seconds)
 
