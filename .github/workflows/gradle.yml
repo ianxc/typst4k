@@ -40,8 +40,15 @@ jobs:
           gradle-version: '8.10.2'
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
 
-      - name: Build with bundled gradle
+      - name: Build with bundled Gradle
         run: gradle build
+
+      - name: Upload sample PDF artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-pdf-output
+          path: processWriter/build/tmp/test_1/r1_output.pdf
+          retention-days: 28
 
   dependency-submission:
     runs-on: ubuntu-latest
