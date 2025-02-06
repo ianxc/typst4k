@@ -48,6 +48,7 @@ jobs:
         with:
           name: sample-pdf-output
           path: processWriter/build/tmp/test_1/r1_output.pdf
+          include-hidden-files: true
           retention-days: 28
 
   dependency-submission:
