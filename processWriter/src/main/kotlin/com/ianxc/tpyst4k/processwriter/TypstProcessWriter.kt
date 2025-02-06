@@ -17,7 +17,7 @@ class TypstProcessWriter(
 
     override fun write(
         request: TypstWriteRequest,
-        executionOptions: TypstExecutionOptions,
+        execOptions: TypstExecutionOptions,
     ): TypstWriteResponse {
         val cmd = requestToCmd(request)
         val builder =
@@ -28,7 +28,7 @@ class TypstProcessWriter(
         val markStart = timeSource.markNow()
         val process = builder.start()
 
-        val (n, unit) = extractTimeout(executionOptions)
+        val (n, unit) = extractTimeout(execOptions)
         val done = process.waitFor(n, unit)
         val markEnd = timeSource.markNow()
         if (!done) {
