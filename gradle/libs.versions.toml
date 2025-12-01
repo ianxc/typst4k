@@ -3,7 +3,7 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
-kotest = "5.9.1"
+kotest = "6.0.7"
 kotlin = "2.1.10"
 ktfmt = "0.21.0"
 
